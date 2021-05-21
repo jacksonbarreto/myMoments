@@ -11,6 +11,42 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'pagina-inicial',
+    loadChildren: () => import('./pagina-inicial/pagina-inicial.module').then( m => m.PaginaInicialPageModule)
+  },
+  {
+    path: 'vivenciar-momentos',
+    loadChildren: () => import('./vivenciar-momentos/vivenciar-momentos.module').then( m => m.VivenciarMomentosPageModule)
+  },
+  {
+    path: 'notificacoes',
+    loadChildren: () => import('./notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule)
+  },
+  {
+    path: 'pesquisa',
+    loadChildren: () => import('./pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
+  },
+  {
+    path: 'modal-search',
+    loadChildren: () => import('./modal-search/modal-search.module').then( m => m.ModalSearchPageModule)
+  },
+  {
+    path: 'modal-vivenciar-momentos',
+    loadChildren: () => import('./modal-vivenciar-momentos/modal-vivenciar-momentos.module').then( m => m.ModalVivenciarMomentosPageModule)
+  },
+  {
+    path: 'momentos',
+    loadChildren: () => import('./momentos/momentos.module').then( m => m.MomentosPageModule)
+  },
+  {
+    path: 'detalhe-momento',
+    loadChildren: () => import('./detalhe-momento/detalhe-momento.module').then( m => m.DetalheMomentoPageModule)
+  },
+  {
+    path: 'modal-detalhe-momento',
+    loadChildren: () => import('./modal-detalhe-momento/modal-detalhe-momento.module').then( m => m.ModalDetalheMomentoPageModule)
+  },
 ];
 
 @NgModule({
