@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 
 import { ModalSearchPage } from '../modal-search/modal-search.page';
 import { NotificacoesPage } from '../notificacoes/notificacoes.page';
+import { ModalVivenciarMomentosPage } from '../modal-vivenciar-momentos/modal-vivenciar-momentos.page';
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -20,7 +21,7 @@ export class PaginaInicialPage implements OnInit {
   async presentModalSearch() {
     const modal = await this.modalController.create({
       component: ModalSearchPage,
-      cssClass: 'my-custom-modal-css'
+      cssClass: 'modal-search-css'
     });
     return await modal.present();
   }  
@@ -31,6 +32,14 @@ export class PaginaInicialPage implements OnInit {
     });
     return await modal.present();
   }  
+  
+  async presentModalVivenciar(){
+    const modal = await this.modalController.create({
+      component: ModalVivenciarMomentosPage,
+      cssClass: 'modal-vivenciar-css'
+    });
+    return await modal.present();
+  }
 
   logoff(){
     this.ctrl.navigateRoot('home');

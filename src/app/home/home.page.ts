@@ -15,6 +15,8 @@ export class HomePage {
   ngOnInit(){
     if(this.platform.is('android'))
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY);
+
+     
   }
 
 public onClick(btn){  
@@ -39,10 +41,22 @@ public onClick(btn){
       break;
     case 5:
       radio5.setAttribute("value", "r5");
-      this.senha=null;
+      this.senha="";
+      this.clearAllRadio();
       this.ctrl.navigateForward('pagina-inicial');
       break;
   }
 }
-
+public clearAllRadio(){
+  let radio1 = document.getElementById('radio1');
+  let radio2 = document.getElementById('radio2');
+  let radio3 = document.getElementById('radio3');
+  let radio4 = document.getElementById('radio4');
+  let radio5 = document.getElementById('radio5');
+  radio1.removeAttribute("value");
+  radio2.removeAttribute("value");
+  radio3.removeAttribute("value");
+  radio4.removeAttribute("value");
+  radio5.removeAttribute("value");
+}
 }

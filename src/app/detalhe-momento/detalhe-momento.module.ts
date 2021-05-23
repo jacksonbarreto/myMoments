@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DetalheMomentoPageRoutingModule } from './detalhe-momento-routing.module';
 
 import { DetalheMomentoPage } from './detalhe-momento.page';
+import { TabsComponent } from '../components/tabs/tabs.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetalheMomentoPageRoutingModule
+    DetalheMomentoPageRoutingModule    
   ],
-  declarations: [DetalheMomentoPage]
+  declarations: [DetalheMomentoPage, TabsComponent]
 })
 export class DetalheMomentoPageModule {}
