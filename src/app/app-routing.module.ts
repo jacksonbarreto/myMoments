@@ -63,6 +63,18 @@ const routes: Routes = [
     path: 'momento-video',
     loadChildren: () => import('./momento-video/momento-video.module').then( m => m.MomentoVideoPageModule)
   },
+  {
+    path: 'dados-encomenda',
+    loadChildren: () => import('./dados-encomenda/dados-encomenda.module').then( m => m.DadosEncomendaPageModule)
+  },
+  {
+    path: 'modal-compra-efetuada',
+    loadChildren: () => import('./modal-compra-efetuada/modal-compra-efetuada.module').then( m => m.ModalCompraEfetuadaPageModule)
+  },
+  {
+    path: 'modal-apagar-momento',
+    loadChildren: () => import('./modal-apagar-momento/modal-apagar-momento.module').then( m => m.ModalApagarMomentoPageModule)
+  },
 ];
 
 @NgModule({

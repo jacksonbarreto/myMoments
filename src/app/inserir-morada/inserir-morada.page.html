@@ -1,9 +1,66 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>inserir-morada</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Dados Entrega</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+    <div style="height: 40%;">
+        <ion-item-divider>
+            <ion-label>
+                Endereço de entrega
+            </ion-label>
+        </ion-item-divider>
+        <ion-item>
+            <ion-label position="floating">Descrição da morada</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item style="padding-top: 15px;">
+            <ion-label position="floating">Morada</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <div class="row" style="padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px;">
+            <ion-item style="width: 40%; float:left">
+                <ion-label position="floating">Codigo postal</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item style="width: 40%; float:right">
+                <ion-label position="floating">Cidade</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+        </div>
+    </div>
+
+    <div style="height: 40%; padding-top: 25px;">
+        <ion-item-divider>
+            <ion-label>
+                Dados do destinatário
+            </ion-label>
+        </ion-item-divider>
+        <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item style="padding-top: 15px;">
+            <ion-label position="floating">Número de telefone</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item style="padding-top: 15px;">
+            <ion-label position="floating">Número de contribuinte</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+    </div>
 
 </ion-content>
+
+<ion-footer style="height:8%;">
+    <ion-button (click)="cancelar()" style="width: 45%; height:80%; padding-left: 5px;">
+        Cancelar
+    </ion-button>
+    <ion-button (click)="guardar()" style="width: 45%; height:80%; padding-right: 5px;" class="ion-float-right">
+        Guardar
+    </ion-button>
+</ion-footer>

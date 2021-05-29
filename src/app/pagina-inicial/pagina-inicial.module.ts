@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { PaginaInicialPageRoutingModule } from './pagina-inicial-routing.module';
 
 import { PaginaInicialPage } from './pagina-inicial.page';
+import { MediaItemComponent } from '../components/media-item/media-item.component';
+import { TabsComponent } from '../components/tabs/tabs.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { PaginaInicialPage } from './pagina-inicial.page';
     IonicModule,
     PaginaInicialPageRoutingModule
   ],
-  declarations: [PaginaInicialPage]
+  declarations: [PaginaInicialPage, MediaItemComponent, TabsComponent]
 })
-export class PaginaInicialPageModule {}
+export class PaginaInicialPageModule { }

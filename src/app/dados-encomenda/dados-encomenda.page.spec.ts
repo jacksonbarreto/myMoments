@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { MediaItemComponent } from './media-item.component';
+import { DadosEncomendaPage } from './dados-encomenda.page';
 
-describe('MediaItemComponent', () => {
-  let component: MediaItemComponent;
-  let fixture: ComponentFixture<MediaItemComponent>;
+describe('DadosEncomendaPage', () => {
+  let component: DadosEncomendaPage;
+  let fixture: ComponentFixture<DadosEncomendaPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MediaItemComponent ],
+      declarations: [ DadosEncomendaPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MediaItemComponent);
+    fixture = TestBed.createComponent(DadosEncomendaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

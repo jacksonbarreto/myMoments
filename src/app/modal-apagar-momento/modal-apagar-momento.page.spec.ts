@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { MediaItemComponent } from './media-item.component';
+import { ModalApagarMomentoPage } from './modal-apagar-momento.page';
 
-describe('MediaItemComponent', () => {
-  let component: MediaItemComponent;
-  let fixture: ComponentFixture<MediaItemComponent>;
+describe('ModalApagarMomentoPage', () => {
+  let component: ModalApagarMomentoPage;
+  let fixture: ComponentFixture<ModalApagarMomentoPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MediaItemComponent ],
+      declarations: [ ModalApagarMomentoPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MediaItemComponent);
+    fixture = TestBed.createComponent(ModalApagarMomentoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
