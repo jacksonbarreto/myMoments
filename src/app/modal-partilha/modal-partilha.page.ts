@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-modal-partilha',
@@ -25,13 +26,11 @@ export class ModalPartilhaPage implements OnInit {
 
   }
 
-
   handleInput(event) {
     this.items = Array.from(document.querySelector('ion-list').children);
-
-    const query = event.target.value.toLowerCase();
+    const query = event.target.value.toLowerCase();    
     requestAnimationFrame(() => {
-      this.items.forEach(item => {
+      this.items.forEach(item => {        
         const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
         item.style.display = shouldShow ? 'block' : 'none';
       });
