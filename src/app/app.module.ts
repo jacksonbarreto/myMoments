@@ -9,8 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
-
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

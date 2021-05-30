@@ -6,6 +6,7 @@ import { ModalSearchPage } from '../modal-search/modal-search.page';
 import { NotificacoesPage } from '../notificacoes/notificacoes.page';
 import { ModalVivenciarMomentosPage } from '../modal-vivenciar-momentos/modal-vivenciar-momentos.page';
 import { MediaItemComponent } from '../components/media-item/media-item.component';
+
 import { SelectModeService } from '../services/select-mode.service';
 
 @Component({
