@@ -27,6 +27,10 @@ export class SelectModeService implements OnInit {
     items.forEach(item => item.checkBoxStatus(false));
   }
 
+  public removeSelected(items: MediaItemComponent[]): MediaItemComponent[] {
+    return items.filter(item => item.isChecked());
+  }
+
   public disableSelectMode(items: MediaItemComponent[]) {
     items.forEach(item => item.disableCheckBox());
   }
