@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
@@ -16,6 +16,7 @@ export class TabsComponent implements OnInit {
   private subjectDeleteAction: Subject<boolean>;
   private subjectPreDeleteAction: Subject<boolean>;
   private subjectPreShare: Subject<boolean>;
+  @Input('deleteDirect') deleteDirect: string;
 
   constructor(public ctrl: NavController, public router: Router, public modalController: ModalController) {
     this.subjectDeleteAction = new Subject();
@@ -42,7 +43,10 @@ export class TabsComponent implements OnInit {
   }
 
   public preRemoveItem(): void {
-    this.subjectPreDeleteAction.next(true);
+    if (this.deleteDirect)
+      this.subjectPreDeleteAction.next(true);
+    else
+      this.apagar();
   }
 
   public getPreSubjectShare(): Subject<boolean> {
