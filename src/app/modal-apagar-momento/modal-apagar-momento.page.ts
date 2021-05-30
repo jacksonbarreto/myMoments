@@ -13,14 +13,10 @@ export class ModalApagarMomentoPage implements OnInit {
   ngOnInit() {
   }
   cancelar(){
-    this.modalController.dismiss({
-      'dismissed': true
-    });
+    this.modalController.dismiss("not");
   }
   confirma(){
-    this.modalController.dismiss({
-      'dismissed': true
-    });
+    this.modalController.dismiss("ok");
     this.presentToast();
   }
   async presentToast() {

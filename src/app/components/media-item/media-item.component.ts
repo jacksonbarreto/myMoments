@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class MediaItemComponent implements OnInit {
 
+  private active: boolean;
   private longPressActive: boolean;
   private checkBoxVisible: boolean;
   private startTime: number;
@@ -25,13 +26,12 @@ export class MediaItemComponent implements OnInit {
   constructor(private navRoot: NavController) {
     this.longPressActive = false;
     this.checkBoxVisible = false;
+    this.active = true;
     this.checked = false;
     this.durationLongPress = 500;
     this.subject = new Subject();
     this.subjectChecked = new Subject();
   }
-
-
 
   ngOnInit() {
 
@@ -98,6 +98,14 @@ export class MediaItemComponent implements OnInit {
     return this.subject;
   }
 
+  public inactivate(): void {
+    this.active = false;
+  }
+
+  public isActive(): boolean {
+    return this.active;
+  }
+
 
   private verifyLongPress(): void {
     if ((this.endTime - this.startTime) >= this.durationLongPress) {
@@ -108,6 +116,5 @@ export class MediaItemComponent implements OnInit {
     }
 
   }
-
 
 }

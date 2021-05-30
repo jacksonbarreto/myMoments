@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+import { ModalApagarMomentoPage } from 'src/app/modal-apagar-momento/modal-apagar-momento.page';
+import { ModalPartilhaPage } from 'src/app/modal-partilha/modal-partilha.page';
 
 
 @Component({
@@ -10,12 +13,49 @@ import { NavController } from '@ionic/angular';
 })
 export class TabsComponent implements OnInit {
 
-  constructor(public ctrl: NavController, public router: Router) { }
+  private subjectDeleteAction: Subject<boolean>;
 
-  ngOnInit() {}
-
-  revelarMomentos(){
-    this.ctrl.navigateForward('comprar');
-    //this.router.navigateByUrl('/comprar');
+  constructor(public ctrl: NavController, public router: Router, public modalController:ModalController) {
+    this.subjectDeleteAction = new Subject();
   }
+
+  ngOnInit() { }
+
+  revelarMomentos() {
+    this.ctrl.navigateForward('comprar');
+  }
+
+  public getSubjectDeleteAction(): Subject<boolean> {
+    return this.subjectDeleteAction;
+  }
+
+  public deleteItem(): void {
+    this.subjectDeleteAction.next(true);
+  }
+ 
+  async partilha() {
+    const modal = await this.modalController.create({
+      component: ModalPartilhaPage,
+      cssClass: 'modal-vivenciar-css'
+    });
+    return await modal.present();
+  }
+
+  async apagar() {
+    const modal = await this.modalController.create({
+      component: ModalApagarMomentoPage,
+      cssClass: 'modal-vivenciar-css'
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      const response = data['data']; // Here's your selected user!
+      if(response=="ok"){
+        this.deleteItem();
+      }
+     });
+
+
+    return await modal.present();
+  }
+  
 }
