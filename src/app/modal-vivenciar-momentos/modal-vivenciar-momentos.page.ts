@@ -7,14 +7,34 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal-vivenciar-momentos.page.scss'],
 })
 export class ModalVivenciarMomentosPage implements OnInit {
-  public conteudoModal: any;
-  public modalP1:any;
-  public modalP2:any;
-  public modalP3:any;
+    public video:boolean=false;
+
+    public mostra1:boolean=true;
+    public mostra2:boolean=false;
 
   constructor(public modalController:ModalController) { }
 
   ngOnInit() {
+  }
+
+  onSelectChange(event) {
+    const selecionado=event.detail.value;
+    if(selecionado == "video"){     
+      this.video = true;
+    }else{      
+      this.video = false;
+    }
+  }
+
+  comecaRegistar(){
+    this.mostra1=false;
+    this.mostra2=true;
+  }
+
+  terminarVivenciarMomento(){
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 
 }
