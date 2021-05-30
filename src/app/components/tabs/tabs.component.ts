@@ -16,7 +16,6 @@ export class TabsComponent implements OnInit {
   private subjectDeleteAction: Subject<boolean>;
   private subjectPreDeleteAction: Subject<boolean>;
   private subjectPreShare: Subject<boolean>;
-  @Input('deleteDirect') deleteDirect: string;
 
   constructor(public ctrl: NavController, public router: Router, public modalController: ModalController) {
     this.subjectDeleteAction = new Subject();
@@ -43,10 +42,7 @@ export class TabsComponent implements OnInit {
   }
 
   public preRemoveItem(): void {
-    if (this.deleteDirect)
-      this.subjectPreDeleteAction.next(true);
-    else
-      this.apagar();
+    this.subjectPreDeleteAction.next(true);
   }
 
   public getPreSubjectShare(): Subject<boolean> {
