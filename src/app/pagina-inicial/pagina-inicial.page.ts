@@ -27,6 +27,8 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
   private subjectDelete: Subject<boolean>;
   private toolbarVisibleStatus: any;
 
+  public albuns:any;
+
   constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController, public toastController: ToastController) {
     this.selectMode = false;
     this.selectedCounter = 0;
@@ -81,6 +83,11 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
+    fetch('../../assets/data/albuns.json')
+      .then(res => res.json())
+      .then(json => {
+        this.albuns = json;
+      });
   }
 
   async msgError(msg: string): Promise<void> {
