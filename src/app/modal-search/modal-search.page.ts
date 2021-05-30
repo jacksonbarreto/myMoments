@@ -7,9 +7,16 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './modal-search.page.html',
   styleUrls: ['./modal-search.page.scss'],
 })
-export class ModalSearchPage{
+export class ModalSearchPage implements OnInit{
+  public amigos: any;
 
-  constructor(public modalController:ModalController) { } 
+  constructor(public modalController:ModalController) { 
+   
+    
+  } 
+
+  ngOnInit(){
+  }
 
   dismiss() {
     this.modalController.dismiss({

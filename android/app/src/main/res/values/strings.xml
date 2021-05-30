@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">My Moments</string>
+    <string name="title_activity_main">My Moments</string>
+    <string name="package_name">com.mymoments.pt</string>
+    <string name="custom_url_scheme">com.mymoments.pt</string>
+</resources>

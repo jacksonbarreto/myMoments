@@ -7,7 +7,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./inserir-pagamento.page.scss'],
 })
 export class InserirPagamentoPage implements OnInit {
-  private mySelect: any="";
+  public mySelect: any="";
   public cartao: boolean = false;
   public paypal: boolean = false;
   public mbway: boolean = false;

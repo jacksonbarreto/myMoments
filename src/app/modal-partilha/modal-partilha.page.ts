@@ -7,20 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalPartilhaPage implements OnInit {
 
-  public searchbar:any;
-  public items:any;
-
+  public searchbar: any;
+  public items: any;
+  public amigos: any;
   constructor() { }
 
   ngOnInit() {
-    this.searchbar=document.querySelector('ion-searchbar');
+    this.searchbar = document.querySelector('ion-searchbar');
     this.searchbar.addEventListener('ionInput', this.handleInput);
+
+    fetch('./assets/data/amigos.json')
+      .then(res => res.json())
+      .then(json => {
+        this.amigos = json;
+      });
+      console.log(this.amigos);
   }
-   
+
 
   handleInput(event) {
     this.items = Array.from(document.querySelector('ion-list').children);
-    
+
     const query = event.target.value.toLowerCase();
     requestAnimationFrame(() => {
       this.items.forEach(item => {
@@ -30,7 +37,7 @@ export class ModalPartilhaPage implements OnInit {
     });
   }
 
-  partilhaAmiguinho(btn){
-    console.log(btn);
+  partilhaAmiguinho(btn) {
+    console.log(this.amigos);
   }
 }
