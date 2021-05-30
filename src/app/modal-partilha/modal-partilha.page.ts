@@ -29,4 +29,8 @@ export class ModalPartilhaPage implements OnInit {
       });
     });
   }
+
+  partilhaAmiguinho(btn){
+    console.log(btn);
+  }
 }

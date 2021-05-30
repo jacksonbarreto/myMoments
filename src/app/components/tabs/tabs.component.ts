@@ -36,7 +36,7 @@ export class TabsComponent implements OnInit {
   async partilha() {
     const modal = await this.modalController.create({
       component: ModalPartilhaPage,
-      cssClass: 'modal-vivenciar-css'
+      cssClass: 'modal-partilhar-css'
     });
     return await modal.present();
   }

@@ -15,16 +15,50 @@
             </ion-button>
         </ion-item>
     </ion-list>
+
 </ion-content>
 <ion-content>
-    <ion-list>
-        <ion-label class="ion-text-wrap">mymoments.com/</ion-label>
+    <hr>
+    <ion-row class="ion-justify-content-center transparent-background-color">
+        <ion-item class="transparent-background-color">
+            <ion-label class="ion-text-wrap" style="padding-left: 15px;">mymoments.com/</ion-label>
+            <ion-input type="text" placeholder="Viana"></ion-input>
+        </ion-item>
+    </ion-row>
 
-    </ion-list>
-    <ion-list>
-        <ion-button slot="center">
-            Partilha
-        </ion-button>
-    </ion-list>
+    <ion-row class="ion-justify-content-center transparent-background-color" style="border-bottom: 1px;border-color: aliceblue;">
+        <ion-item class="transparent-background-color" lines="none">
+            <ion-button>
+                Criar link
+            </ion-button>
+        </ion-item>
+    </ion-row>
+
+
+    <ion-label style="padding-left: 15px;">Partilha em apps</ion-label>
+    <ion-row class="ion-justify-content-center transparent-background-color">
+
+        <ion-col size="auto">
+            <ion-fab-button color="light">
+                <ion-icon name="mail-open-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-col>
+        <ion-col size="auto">
+            <ion-fab-button color="light">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </ion-fab-button>
+        </ion-col>
+        <ion-col size="auto">
+            <ion-fab-button color="light">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </ion-fab-button>
+        </ion-col>
+        <ion-col size="auto">
+            <ion-fab-button color="light">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </ion-fab-button>
+        </ion-col>
+    </ion-row>
+
 
 </ion-content>
