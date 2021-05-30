@@ -51,7 +51,7 @@ export class DetalheMomentoPage implements OnInit {
       .then((data) => {
         const response = data['data']; // Here's your selected user!
         if (response == "ok") {
-          this.ctrl.back();
+          this.ctrl.navigateForward("momentos");
         }
       });
 
