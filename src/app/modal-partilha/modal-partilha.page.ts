@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Console } from 'console';
+
 
 @Component({
   selector: 'app-modal-partilha',
