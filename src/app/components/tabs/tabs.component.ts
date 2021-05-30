@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -10,12 +11,23 @@ import { NavController } from '@ionic/angular';
 })
 export class TabsComponent implements OnInit {
 
-  constructor(public ctrl: NavController, public router: Router) { }
+  private subjectDeleteAction: Subject<boolean>;
 
-  ngOnInit() {}
+  constructor(public ctrl: NavController, public router: Router) {
+    this.subjectDeleteAction = new Subject();
+  }
 
-  revelarMomentos(){
+  ngOnInit() { }
+
+  revelarMomentos() {
     this.ctrl.navigateForward('comprar');
-    //this.router.navigateByUrl('/comprar');
+  }
+
+  public getSubjectDeleteAction(): Subject<boolean> {
+    return this.subjectDeleteAction;
+  }
+
+  public deleteItem(): void {
+    this.subjectDeleteAction.next(true);
   }
 }
