@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { IonCard, ModalController, NavController } from '@ionic/angular';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
 import { ModalSearchPage } from '../modal-search/modal-search.page';
@@ -8,6 +8,8 @@ import { ModalVivenciarMomentosPage } from '../modal-vivenciar-momentos/modal-vi
 import { MediaItemComponent } from '../components/media-item/media-item.component';
 
 import { SelectModeService } from '../services/select-mode.service';
+import { TabsComponent } from '../components/tabs/tabs.component';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -17,11 +19,13 @@ import { SelectModeService } from '../services/select-mode.service';
 export class PaginaInicialPage implements OnInit, AfterViewInit {
 
   @ViewChildren(MediaItemComponent, { read: MediaItemComponent }) mediaItems: QueryList<MediaItemComponent>;
+  @ViewChild(TabsComponent) tabBar: TabsComponent;
 
   private cardArray: MediaItemComponent[];
   private selectMode: boolean;
   private selectedCounter: number;
-
+  private subjectDelete: Subject<boolean>;
+  private toolbarVisibleStatus: any;
 
   constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController) {
     this.selectMode = false;
@@ -31,11 +35,25 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.cardArray = this.mediaItems.toArray();
+    this.subjectDelete = new Subject();
+    this.toolbarVisibleStatus = document.getElementById("tabP");
+    this.subjectDelete.subscribe(obs => {
+
+      this.tabBar.getSubjectDeleteAction().subscribe(deleteAction => {
+        if (deleteAction) {
+          this.selectModeService.removeSelected(this.cardArray);
+        }
+      });
+    });
+
     this.cardArray.forEach(item => {
       item.getStatus().subscribe(selectMode => {
         this.selectModeService.enableSelectMode(this.cardArray);
-        if (selectMode)
+        if (selectMode) {
           this.selectMode = true;
+          this.toolbarVisibleStatus.removeAttribute("hidden");
+          this.subjectDelete.next(true);
+        }
       }
       );
       item.getCounterStatus().subscribe(counterStatus => {
@@ -47,7 +65,6 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
     }
     );
   }
-
 
 
   ngOnInit() {
@@ -67,6 +84,7 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
   public cancelSelect(): void {
     this.selectModeService.disableSelectMode(this.cardArray);
+    this.toolbarVisibleStatus.setAttribute("hidden", true);
     this.setSelectMode(false);
   }
 

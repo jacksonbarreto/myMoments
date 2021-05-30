@@ -1,4 +1,4 @@
-import { ElementRef, Injectable, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MediaItemComponent } from '../components/media-item/media-item.component';
 
@@ -12,7 +12,6 @@ export class SelectModeService implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.ngAfterViewInit();
   }
 
   public enableSelectMode(items: MediaItemComponent[]) {
@@ -28,8 +27,14 @@ export class SelectModeService implements OnInit {
   }
 
 
-  public removeSelected(items: MediaItemComponent[]): MediaItemComponent[] {
-    return items.filter(item => item.isChecked());
+  public removeSelected(items: MediaItemComponent[]): void {
+    items.forEach(item => {
+      if (item.isChecked()) {
+        item.inactivate();
+        item.checkBoxStatus(false);
+      }
+
+    });
   }
 
   public disableSelectMode(items: MediaItemComponent[]) {
