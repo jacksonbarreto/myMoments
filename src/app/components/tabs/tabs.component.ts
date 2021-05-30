@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
+import { ModalApagarMomentoPage } from 'src/app/modal-apagar-momento/modal-apagar-momento.page';
+import { ModalPartilhaPage } from 'src/app/modal-partilha/modal-partilha.page';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class TabsComponent implements OnInit {
 
   private subjectDeleteAction: Subject<boolean>;
 
-  constructor(public ctrl: NavController, public router: Router) {
+  constructor(public ctrl: NavController, public router: Router, public modalController:ModalController) {
     this.subjectDeleteAction = new Subject();
   }
 
@@ -30,4 +32,30 @@ export class TabsComponent implements OnInit {
   public deleteItem(): void {
     this.subjectDeleteAction.next(true);
   }
+ 
+  async partilha() {
+    const modal = await this.modalController.create({
+      component: ModalPartilhaPage,
+      cssClass: 'modal-vivenciar-css'
+    });
+    return await modal.present();
+  }
+
+  async apagar() {
+    const modal = await this.modalController.create({
+      component: ModalApagarMomentoPage,
+      cssClass: 'modal-vivenciar-css'
+    });
+    modal.onDidDismiss()
+    .then((data) => {
+      const response = data['data']; // Here's your selected user!
+      if(response=="ok"){
+        this.deleteItem();
+      }
+     });
+
+
+    return await modal.present();
+  }
+  
 }

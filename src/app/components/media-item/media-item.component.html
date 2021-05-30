@@ -1,5 +1,4 @@
-<ion-card style="width: 28%;display: inline-block;" *ngIf="isActive()" tappable (touchstart)="startPress()"
-    (touchend)="endPress()" (click)="onClick()">
+<ion-card style="width: 28%;display: inline-block;" *ngIf="isActive()" tappable (touchstart)="startPress()" (touchend)="endPress()" (click)="onClick()">
     <ion-card-header style="padding:10px;">
         <ion-card-subtitle class="ion-float-right">{{time}}</ion-card-subtitle>
         <ion-checkbox style="display:block;" *ngIf="isCheckBoxVisible()" [(ngModel)]="checked" (click)="onClick()">

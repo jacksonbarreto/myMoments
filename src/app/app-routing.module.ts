@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'modal-apagar-momento',
     loadChildren: () => import('./modal-apagar-momento/modal-apagar-momento.module').then( m => m.ModalApagarMomentoPageModule)
   },
+  {
+    path: 'modal-partilha',
+    loadChildren: () => import('./modal-partilha/modal-partilha.module').then( m => m.ModalPartilhaPageModule)
+  },
 ];
 
 @NgModule({
