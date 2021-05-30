@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { MediaItemComponent } from '../components/media-item/media-item.component';
 
@@ -15,6 +15,8 @@ export class MomentosPage implements OnInit {
 
   @ViewChildren(MediaItemComponent, { read: MediaItemComponent }) mediaItems: QueryList<MediaItemComponent>;
   @ViewChild(TabsComponent) tabBar: TabsComponent;
+
+
 
   private cardArray: MediaItemComponent[];
   private selectMode: boolean;

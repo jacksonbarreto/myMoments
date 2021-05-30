@@ -1,96 +1,58 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar *ngIf="!isSelectMode()">
         <ion-title>Revelar momentos</ion-title>
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
+    <ion-toolbar class="i-text-center" *ngIf="isSelectMode()">
+        <ion-title size="small"> {{getMsgCounter()}} </ion-title>
+        <ion-icon color="white" slot="end" name="copy-outline" (click)="selectAll()">
+        </ion-icon>
+        <ion-icon slot="end" name="remove-outline" (click)="unSelectAll()"></ion-icon>
+        <ion-icon slot="start" name="close-outline" (click)="cancelSelect()"></ion-icon>
+        <ion-icon slot="end" name="trash-outline" (click)="remove()"></ion-icon>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div class="row">
-        <ion-button (click)="onClick()" style="width: 45%;padding-left: 5px;">
-            Selecionar tudo
-        </ion-button>
-        <ion-button (click)="onClick()" style="width: 45%; padding-right: 5px;" class="ion-float-right">
-            Limpar carrinho
-        </ion-button>
-    </div>
+
     <ion-item-divider>
         <ion-label>
             Videos
         </ion-label>
     </ion-item-divider>
-    <ion-card style="width: 28%;display: inline-block;" (click)="retirarMomentos()">
-        <ion-card-header style="padding:10px;">
-            <ion-card-subtitle class="ion-float-right">14:30</ion-card-subtitle>
-        </ion-card-header>
 
-        <ion-card-content>
-            <img src="../../assets/img/imgDef.png" />
-            <ion-text>
-                Viana
-            </ion-text>
-        </ion-card-content>
-    </ion-card>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <app-media-item route="momento-video" image="../../assets/img/imgDef.png"
+                    *ngFor="let i of [].constructor(4) ">
+                </app-media-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
     <ion-item-divider>
         <ion-label>
             Fotografias
         </ion-label>
     </ion-item-divider>
-    <div class="row">
-        <ion-card style="width: 28%;display: inline-block;">
-            <ion-card-header style="padding:10px;">
-                <ion-card-subtitle class="ion-float-right">14:30</ion-card-subtitle>
-            </ion-card-header>
 
-            <ion-card-content>
-                <img src="../../assets/img/imgDef.png" />
-                <ion-text>
-                    Viana
-                </ion-text>
-            </ion-card-content>
-        </ion-card>
-        <ion-card style="width: 28%;display: inline-block;">
-            <ion-card-header style="padding:10px;">
-                <ion-card-subtitle class="ion-float-right">14:30</ion-card-subtitle>
-            </ion-card-header>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <app-media-item route="comprar" image="../../assets/img/imgDef.png"
+                    *ngFor="let i of [].constructor(6) ">
+                </app-media-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-            <ion-card-content>
-                <img src="../../assets/img/imgDef.png" />
-                <ion-text>
-                    Viana
-                </ion-text>
-            </ion-card-content>
-        </ion-card>
-        <ion-card style="width: 28%;display: inline-block;">
-            <ion-card-header style="padding:10px;">
-                <ion-card-subtitle class="ion-float-right">14:30</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content>
-                <img src="../../assets/img/imgDef.png" />
-                <ion-text>
-                    Viana
-                </ion-text>
-            </ion-card-content>
-        </ion-card>
-        <ion-card style="width: 28%;display: inline-block;">
-            <ion-card-header style="padding:10px;">
-                <ion-card-subtitle class="ion-float-right">14:30</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content>
-                <img src="../../assets/img/imgDef.png" />
-                <ion-text>
-                    Viana
-                </ion-text>
-            </ion-card-content>
-        </ion-card>
-    </div>
 </ion-content>
 
-<ion-footer style="height:8%;">
+<ion-footer style="height:8%;" *ngIf="!isSelectMode()">
     <ion-button (click)="nextStep()" style="width: 45%; height:80%; padding-left: 5px;">
         Checkout
     </ion-button>

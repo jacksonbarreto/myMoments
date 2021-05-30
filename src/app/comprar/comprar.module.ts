@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ComprarPageRoutingModule } from './comprar-routing.module';
 
 import { ComprarPage } from './comprar.page';
+import { MediaItemComponent } from '../components/media-item/media-item.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ComprarPage } from './comprar.page';
     IonicModule,
     ComprarPageRoutingModule
   ],
-  declarations: [ComprarPage]
+  declarations: [ComprarPage, MediaItemComponent]
 })
-export class ComprarPageModule {}
+export class ComprarPageModule { }
