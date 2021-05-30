@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+
+import { ModalCompraEfetuadaPage } from '../modal-compra-efetuada/modal-compra-efetuada.page';
 
 @Component({
   selector: 'app-dados-encomenda',
@@ -8,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class DadosEncomendaPage implements OnInit {
 
-  constructor(private ctrl: NavController) { }
+  constructor(private ctrl: NavController, public modalController:ModalController) { }
 
   ngOnInit() {
   }
@@ -21,5 +23,16 @@ export class DadosEncomendaPage implements OnInit {
     this.ctrl.navigateForward('inserir-pagamento');
   }
 
+  cancelar(){
+    this.ctrl.pop();
+  }
+
+  async nextStep() {
+    const modal = await this.modalController.create({
+      component: ModalCompraEfetuadaPage,
+      cssClass: 'modal-vivenciar-css'
+    });
+    return await modal.present();
+  }
 
 }

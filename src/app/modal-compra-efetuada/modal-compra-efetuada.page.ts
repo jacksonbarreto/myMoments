@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-compra-efetuada',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalCompraEfetuadaPage implements OnInit {
 
-  constructor() { }
+  constructor(public ctrl: NavController, public modalController: ModalController) { }
 
   ngOnInit() {
+  }
+
+  finalizarCompra(){
+    this.ctrl.navigateRoot('pagina-inicial');
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 
 }
