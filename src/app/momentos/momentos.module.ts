@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { MomentosPageRoutingModule } from './momentos-routing.module';
 
 import { MomentosPage } from './momentos.page';
+import { TabsComponent } from '../components/tabs/tabs.component';
+import { MediaItemComponent } from '../components/media-item/media-item.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { MomentosPage } from './momentos.page';
     IonicModule,
     MomentosPageRoutingModule
   ],
-  declarations: [MomentosPage]
+  declarations: [MomentosPage, TabsComponent, MediaItemComponent]
 })
-export class MomentosPageModule {}
+export class MomentosPageModule { }
