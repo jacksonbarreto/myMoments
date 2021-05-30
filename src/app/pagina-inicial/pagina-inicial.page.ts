@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
 import { ModalSearchPage } from '../modal-search/modal-search.page';
@@ -27,7 +27,7 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
   private subjectDelete: Subject<boolean>;
   private toolbarVisibleStatus: any;
 
-  constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController) {
+  constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController, public toastController: ToastController) {
     this.selectMode = false;
     this.selectedCounter = 0;
   }
@@ -37,6 +37,19 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
     this.cardArray = this.mediaItems.toArray();
     this.subjectDelete = new Subject();
     this.toolbarVisibleStatus = document.getElementById("tabP");
+
+    this.subjectDelete.subscribe(obs => {
+
+      this.tabBar.getPresubjectDeleteAction().subscribe(deleteAction => {
+        console.log("veio do predelete");
+        if (this.getSelectCounter() > 0) {
+          this.tabBar.apagar();
+        } else {
+          this.msgError("Selecione pelo menos um momento.");
+        }
+      });
+    });
+
     this.subjectDelete.subscribe(obs => {
 
       this.tabBar.getSubjectDeleteAction().subscribe(deleteAction => {
@@ -68,6 +81,14 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
+  }
+
+  async msgError(msg: string): Promise<void> {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
   public isSelectMode(): boolean {

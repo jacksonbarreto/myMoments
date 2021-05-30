@@ -14,9 +14,13 @@ import { ModalPartilhaPage } from 'src/app/modal-partilha/modal-partilha.page';
 export class TabsComponent implements OnInit {
 
   private subjectDeleteAction: Subject<boolean>;
+  private subjectPreDeleteAction: Subject<boolean>;
+  private subjectPreShare: Subject<boolean>;
 
-  constructor(public ctrl: NavController, public router: Router, public modalController:ModalController) {
+  constructor(public ctrl: NavController, public router: Router, public modalController: ModalController) {
     this.subjectDeleteAction = new Subject();
+    this.subjectPreDeleteAction = new Subject();
+    this.subjectPreShare = new Subject();
   }
 
   ngOnInit() { }
@@ -32,8 +36,25 @@ export class TabsComponent implements OnInit {
   public deleteItem(): void {
     this.subjectDeleteAction.next(true);
   }
- 
-  async partilha() {
+
+  public getPresubjectDeleteAction(): Subject<boolean> {
+    return this.subjectPreDeleteAction;
+  }
+
+  public preRemoveItem(): void {
+    this.subjectPreDeleteAction.next(true);
+  }
+
+  public getPreSubjectShare(): Subject<boolean> {
+    return this.subjectPreShare;
+  }
+
+  public preShare(): void {
+    this.subjectPreShare.next(true);
+
+  }
+
+  async share() {
     const modal = await this.modalController.create({
       component: ModalPartilhaPage,
       cssClass: 'modal-vivenciar-css'
@@ -47,15 +68,15 @@ export class TabsComponent implements OnInit {
       cssClass: 'modal-vivenciar-css'
     });
     modal.onDidDismiss()
-    .then((data) => {
-      const response = data['data']; // Here's your selected user!
-      if(response=="ok"){
-        this.deleteItem();
-      }
-     });
+      .then((data) => {
+        const response = data['data']; // Here's your selected user!
+        if (response == "ok") {
+          this.deleteItem();
+        }
+      });
 
 
     return await modal.present();
   }
-  
+
 }

@@ -1,6 +1,6 @@
 <ion-tabs>
     <ion-tab-bar slot="bottom">
-        <ion-tab-button (click)="partilha()">
+        <ion-tab-button (click)="share()">
             <ion-icon name="share-social-outline"></ion-icon>
             <ion-label>Partilhar</ion-label>
         </ion-tab-button>
@@ -10,8 +10,8 @@
             <ion-label>Adquirir momentos</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button>
-            <ion-icon name="trash-outline" (click)="apagar()"></ion-icon>
+        <ion-tab-button (click)="preRemoveItem()">
+            <ion-icon name="trash-outline"></ion-icon>
             <ion-label>Apagar</ion-label>
         </ion-tab-button>
     </ion-tab-bar>
