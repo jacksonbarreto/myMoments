@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-modal-partilha',
   templateUrl: './modal-partilha.page.html',
@@ -10,18 +12,17 @@ export class ModalPartilhaPage implements OnInit {
   public searchbar: any;
   public items: any;
   public amigos: any;
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
   ngOnInit() {
     this.searchbar = document.querySelector('ion-searchbar');
     this.searchbar.addEventListener('ionInput', this.handleInput);
 
-    fetch('./assets/data/amigos.json')
-      .then(res => res.json())
-      .then(json => {
-        this.amigos = json;
-      });
-      console.log(this.amigos);
+    this.http.get('https://randomuser.me/api/?results=15').subscribe(data=>{
+      this.amigos=data['results'];      
+    })
+
+
   }
 
 
