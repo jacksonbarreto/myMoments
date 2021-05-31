@@ -1,12 +1,20 @@
 <ion-header>
     <ion-toolbar *ngIf="isSelectMode()">
-        <ion-title size="small"> {{getMsgCounter()}} </ion-title>
-        <ion-icon color="white" slot="end" name="copy-outline" (click)="selectAll()">
-        </ion-icon>
-        <ion-icon slot="end" name="remove-outline" (click)="unSelectAll()"></ion-icon>
-        <ion-icon slot="start" name="close-outline" (click)="cancelSelect()"></ion-icon>
+        <ion-button size="small" color="dark" fill="clear" slot="start" (click)="cancelSelect()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+
+        <ion-title size="medium"> {{getMsgCounter()}} </ion-title>
+
+        <ion-button size="small" color="dark" fill="clear" slot="end" (click)="selectAll()">
+            <ion-icon slot="icon-only" name="checkmark-done"></ion-icon>
+        </ion-button>
+        <ion-button size="small" color="dark" fill="clear" slot="end" (click)="unSelectAll()">
+            <ion-icon slot="icon-only" name="square-outline"></ion-icon>
+        </ion-button>
     </ion-toolbar>
 </ion-header>
+
 <ion-content>
 
     <ion-grid fixed>
