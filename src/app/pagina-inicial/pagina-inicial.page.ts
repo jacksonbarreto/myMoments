@@ -27,7 +27,7 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
   private subjectDelete: Subject<boolean>;
   private toolbarVisibleStatus: any;
 
-  public albuns:any;
+  public albuns: any;
 
   constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController, public toastController: ToastController) {
     this.selectMode = false;
@@ -145,7 +145,8 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
   async presentModalNotifica() {
     const modal = await this.modalController.create({
-      component: NotificacoesPage
+      component: NotificacoesPage,
+      cssClass: 'modal-notification-css'
     });
     return await modal.present();
   }
