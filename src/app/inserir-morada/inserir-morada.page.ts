@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-inserir-morada',
   templateUrl: './inserir-morada.page.html',
@@ -13,10 +14,10 @@ export class InserirMoradaPage implements OnInit {
   ngOnInit() {
   }
 
-  cancelar(){
+  cancelar() {
     this.ctrl.pop();
   }
-  guardar(){
+  guardar() {
     this.ctrl.pop();
   }
 
