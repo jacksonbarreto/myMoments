@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { R3TargetBinder } from '@angular/compiler';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class ModalPartilhaPage implements OnInit {
   public searchbar: any;
   public items: any;
   public amigos: any;
+public buttonColor: string = "primary";
+
   constructor(public http: HttpClient) { }
 
   ngOnInit() {
@@ -37,7 +40,7 @@ export class ModalPartilhaPage implements OnInit {
     });
   }
 
-  partilhaAmiguinho(btn) {
-    console.log(this.amigos);
+  partilhaAmiguinho(event) {
+    event.target.setAttribute("disabled", true);
   }
 }

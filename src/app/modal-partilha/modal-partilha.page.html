@@ -10,7 +10,7 @@
                 <img [src]="amigo.picture.medium" />
             </ion-avatar>
             {{amigo.name.first}} {{amigo.name.last}}
-            <ion-button slot="end" (click)="partilhaAmiguinho(this)">
+            <ion-button slot="end" (click)="partilhaAmiguinho($event)">
                 Partilha
             </ion-button>
         </ion-item>
@@ -27,7 +27,7 @@
     </ion-row>
 
     <ion-row class="ion-justify-content-center transparent-background-color" style="border-bottom: 1px;border-color: aliceblue;">
-        <ion-item class="transparent-background-color" lines="none">
+        <ion-item (click)="partilhaAmiguinho($event)" class="transparent-background-color" lines="none">
             <ion-button>
                 Criar link
             </ion-button>
