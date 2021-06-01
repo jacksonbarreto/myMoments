@@ -3,9 +3,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="background">
-
-
-    <div id="container" style="top: 78%;">
+    <div id="container" style="top: 70%;">
         <div class="row">
             <ion-radio-group allow-empty-selection id="radio1">
                 <ion-radio value="r1" style="margin: 10px;--color-checked:white;" disabled="true"></ion-radio>
@@ -58,17 +56,18 @@
             </ion-button>
         </div>
         <div class="row" class="ion-padding-bottom">
-            <ion-button (click)="onClick(digital)" color="#fff" style="font-weight: bold; font-size: large;" class="ion-padding">
+            <ion-button (click)="digital()" color="#fff" style="font-weight: bold; font-size: large;" class="ion-padding">
                 <ion-icon name="finger-print-outline"></ion-icon>
             </ion-button>
             <ion-button (click)="onClick(9)" color="#fff" style="font-weight: bold;font-size: large;" class="ion-padding">
                 0
             </ion-button>
-            <ion-button (click)="onClick(backspace)" color="#fff" style="font-weight: bold; font-size: large;" class="ion-padding">
+            <ion-button (click)="backspace()" color="#fff" style="font-weight: bold; font-size: large;" class="ion-padding">
                 <ion-icon name="backspace-outline"></ion-icon>
             </ion-button>
         </div>
+    </div>
+    <div id="container" style="top: 95%;">
         <a href="#" style="padding-top: 30px;" color="white">Criar uma nova conta</a>
-
     </div>
 </ion-content>
