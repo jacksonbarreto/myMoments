@@ -18,6 +18,7 @@ export class MediaItemComponent implements OnInit {
   private durationLongPress: number;
   private subject: Subject<boolean>;
   private subjectChecked: Subject<boolean>;
+  private event: any;
   public checked: boolean;
   @Input('route') route: string;
   @Input('image') image: string;
@@ -55,9 +56,12 @@ export class MediaItemComponent implements OnInit {
   }
 
   public checkBoxStatus(status: boolean) {
+
     if (status != this.checked) {
       this.checked = status;
-      this.subjectChecked.next(status);
+
+      if (this.event != 'check')
+        this.subjectChecked.next(status);
     }
 
   }
@@ -77,13 +81,21 @@ export class MediaItemComponent implements OnInit {
     this.verifyLongPress();
   }
 
-  public onClick(): void {
+  public onClick(event?): void {
+    if (event)
+      this.event = event.target.id;
+    else
+      this.event = null;
     if (this.checkBoxVisible) {
       if (this.checked) {
         this.checkBoxStatus(false);
+        if (event != null)
+          event.target.removeAttribute('checked', false);
       }
       else {
         this.checkBoxStatus(true);
+        if (event != null)
+          event.target.setAttribute('checked', true);
       }
     } else {
       let navigationExtras: NavigationExtras;
@@ -97,6 +109,8 @@ export class MediaItemComponent implements OnInit {
       this.router.navigate([this.route], navigationExtras);
     }
   }
+
+
 
 
   public getCounterStatus(): Subject<boolean> {

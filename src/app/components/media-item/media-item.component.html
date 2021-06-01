@@ -3,7 +3,8 @@
 
 
     <div class="topBox">
-        <ion-checkbox class="ion-float-left" *ngIf="isCheckBoxVisible()" [(ngModel)]="checked" (click)="onClick()">
+        <ion-checkbox id="check" class="ion-float-left" *ngIf="isCheckBoxVisible()" [(ngModel)]="checked"
+            (click)="onClick($event)">
         </ion-checkbox>
         <ion-text class="ion-float-right">
             {{time}}
