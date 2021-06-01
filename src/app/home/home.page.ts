@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { NavController, Platform } from '@ionic/angular';
-
+import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -10,14 +11,23 @@ import { NavController, Platform } from '@ionic/angular';
 })
 export class HomePage {
   private senha: string = "";
-  constructor(private screenOrientation: ScreenOrientation, public platform: Platform, public ctrl: NavController) { }
+  constructor(private screenOrientation: ScreenOrientation, public platform: Platform, public ctrl: NavController, private routerOutlet: IonRouterOutlet) {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      ctrl.navigateForward("home");
+    });
+
+  }
 
   ngOnInit() {
+    this.senha = "";
+    this.clearAllRadio();
     if (this.platform.is('android'))
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY);
   }
+
+
   public onClick(btn): void {
-    this.senha += ""+btn;
+    this.senha += "" + btn;
     let radio1 = document.getElementById('radio1');
     let radio2 = document.getElementById('radio2');
     let radio3 = document.getElementById('radio3');
@@ -38,13 +48,13 @@ export class HomePage {
         break;
       case 5:
         radio5.setAttribute("value", "r5");
+        this.ctrl.navigateForward('pagina-inicial');
         this.senha = "";
         this.clearAllRadio();
-        this.ctrl.navigateForward('pagina-inicial');
         break;
     }
   }
-  public clearAllRadio() : void{
+  public clearAllRadio(): void {
     let radio1 = document.getElementById('radio1');
     let radio2 = document.getElementById('radio2');
     let radio3 = document.getElementById('radio3');

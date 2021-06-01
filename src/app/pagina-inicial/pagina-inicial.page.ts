@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { ModalController, NavController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, Platform, ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
 import { ModalSearchPage } from '../modal-search/modal-search.page';
@@ -10,6 +10,9 @@ import { MediaItemComponent } from '../components/media-item/media-item.componen
 import { SelectModeService } from '../services/select-mode.service';
 import { TabsComponent } from '../components/tabs/tabs.component';
 import { Subject } from 'rxjs';
+
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -29,7 +32,7 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
   public albuns: any[] = [];
 
-  constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController, public toastController: ToastController) {
+  constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController, public toastController: ToastController, public platform: Platform) {
     this.selectMode = false;
     this.selectedCounter = 0;
   }
