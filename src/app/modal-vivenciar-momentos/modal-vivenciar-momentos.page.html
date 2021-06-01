@@ -22,7 +22,7 @@
         <ion-grid fixed>
             <ion-row class="ion-justify-content-center">
                 <ion-col size="auto">
-                    <ion-button size="small">Cancelar</ion-button>
+                    <ion-button size="small" (click)="cancelar()">Cancelar</ion-button>
                 </ion-col>
                 <ion-col size="auto">
                     <ion-button size="small" (click)="comecaRegistar()">Começar</ion-button>
@@ -33,11 +33,19 @@
 
     </div>
 
-    <div *ngIf="mostra2">
-        <ion-title class="ion-padding">Vivenciar momentos.</ion-title>
-        <ion-label class="ion-padding">Posicione o dispositivo virado para o seu grupo de amigos e aproveite o momento!
-        </ion-label><br>
-        <ion-label class="ion-padding">Pode deixar que nos tratamos dos momentos.</ion-label>
+    <div *ngIf="mostra2" class="ion-margin">
+        <ion-row>
+            <ion-title class="ion-padding ">Vivenciar momentos.</ion-title>
+        </ion-row>
+        <ion-row>
+            <ion-label class="ion-padding ion-text-center">Posicione o dispositivo virado para o seu grupo de amigos e aproveite o momento!
+            </ion-label>
+        </ion-row>
+        <ion-row>
+            <ion-label class="ion-padding ion-text-center">Pode deixar que nos tratamos dos momentos.</ion-label>
+        </ion-row>
+
+
         <ion-row class="ion-justify-content-center">
             <ion-col size="auto">
                 <ion-button size="small" (click)="terminarVivenciarMomento()">Terminar</ion-button>

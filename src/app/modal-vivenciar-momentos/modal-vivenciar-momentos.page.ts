@@ -17,7 +17,7 @@ export class ModalVivenciarMomentosPage implements OnInit {
   ngOnInit() {
   }
 
-  onSelectChange(event) {
+  public onSelectChange(event) :void{
     const selecionado=event.detail.value;
     if(selecionado == "video"){     
       this.video = true;
@@ -26,15 +26,19 @@ export class ModalVivenciarMomentosPage implements OnInit {
     }
   }
 
-  comecaRegistar(){
+  public comecaRegistar():void{
     this.mostra1=false;
     this.mostra2=true;
   }
 
-  terminarVivenciarMomento(){
+  public terminarVivenciarMomento():void{
     this.modalController.dismiss({
       'dismissed': true
     });
   }
-
+  public cancelar():void{
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
 }
