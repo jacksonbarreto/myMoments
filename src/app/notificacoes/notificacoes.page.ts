@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notificacoes',
@@ -8,12 +8,22 @@ import { ModalController } from '@ionic/angular';
 })
 export class NotificacoesPage {
 
-  constructor(public modalController:ModalController) { }
+  constructor(public modalController: ModalController, public navRoot: NavController) { }
 
   dismiss() {
     this.modalController.dismiss({
-     'dismissed': true
-   });
+      'dismissed': true
+    });
+  }
+
+  onClick() {
+    this.navRoot.navigateForward('detalhe-momento');
+    this.dismiss();
+  }
+
+  onClick2() {
+    this.navRoot.navigateForward('momentos');
+    this.dismiss();
   }
 
 }
