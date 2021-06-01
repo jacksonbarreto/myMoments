@@ -115,7 +115,7 @@ export class ComprarPage implements OnInit {
   async fastCheckOut() {
     const modal = await this.modalController.create({
       component: ModalCompraEfetuadaPage,
-      cssClass: 'modal-vivenciar-css'
+      cssClass: 'modal-fim-compra-css'
     });
     return await modal.present();
   }
