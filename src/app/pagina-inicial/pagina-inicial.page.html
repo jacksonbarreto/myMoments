@@ -29,8 +29,8 @@
         </ion-row>
         <ion-row>
             <ion-col size="auto">
-                <app-media-item route="momentos" image="../../assets/img/01.jpg" place="Viana" time="13:29"
-                    *ngFor="let i of [].constructor(3) ">
+                <app-media-item route="momentos" image={{i.value.src}} place={{i.value.localizacao}}
+                    time={{i.value.hora}} *ngFor="let i of albuns.slice(0,3) | keyvalue">
                 </app-media-item>
             </ion-col>
         </ion-row>
@@ -47,8 +47,8 @@
         </ion-row>
         <ion-row>
             <ion-col size="auto">
-                <app-media-item route="momentos" image="../../assets/img/02.jpg" place="Viana" time="13:29"
-                    *ngFor="let i of [].constructor(6) ">
+                <app-media-item route="momentos" image={{i.value.src}} place={{i.value.localizacao}}
+                    time={{i.value.hora}} *ngFor="let i of albuns.slice(3,9) | keyvalue">
                 </app-media-item>
             </ion-col>
         </ion-row>
@@ -65,8 +65,8 @@
         </ion-row>
         <ion-row>
             <ion-col size="auto">
-                <app-media-item route="momentos" image="../../assets/img/imgDef.png" place="Viana" time="13:29"
-                    *ngFor="let i of [].constructor(10) ">
+                <app-media-item route="momentos" image={{i.value.src}} place={{i.value.localizacao}}
+                    time={{i.value.hora}} *ngFor="let i of albuns.slice(9,16) | keyvalue">
                 </app-media-item>
             </ion-col>
         </ion-row>

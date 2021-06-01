@@ -27,7 +27,7 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
   private subjectDelete: Subject<boolean>;
   private toolbarVisibleStatus: any;
 
-  public albuns: any;
+  public albuns: any[] = [];
 
   constructor(private selectModeService: SelectModeService, public modalController: ModalController, public alertController: AlertController, public navRoot: NavController, public toastController: ToastController) {
     this.selectMode = false;
@@ -86,9 +86,12 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
     fetch('../../assets/data/albuns.json')
       .then(res => res.json())
       .then(json => {
-        this.albuns = json;
+        for (let i in json)
+          this.albuns.push(json[i]);
       });
+
   }
+
 
   async msgError(msg: string): Promise<void> {
     const toast = await this.toastController.create({
