@@ -24,7 +24,7 @@ export class MomentosPage implements OnInit {
   private subjectDelete: Subject<boolean>;
   private PresubjectDelete: Subject<boolean>;
   private PresubjectShare: Subject<boolean>;
-  private toolbarVisibleStatus: any;
+  public toolbarVisibleStatus: any;
   public albumName: string;
 
   public albuns: any;
@@ -186,7 +186,9 @@ export class MomentosPage implements OnInit {
         this.selectModeService.enableSelectMode(this.cardArray);
         if (selectMode) {
           this.selectMode = true;
+          console.log(this.toolbarVisibleStatus);
           this.toolbarVisibleStatus.removeAttribute("hidden");
+          console.log(this.toolbarVisibleStatus);
           this.subjectDelete.next(true);
         }
       }
