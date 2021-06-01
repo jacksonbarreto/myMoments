@@ -43,7 +43,6 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
     this.subjectDelete.subscribe(obs => {
 
       this.tabBar.getPresubjectDeleteAction().subscribe(deleteAction => {
-        console.log("veio do predelete");
         if (this.getSelectCounter() > 0) {
           this.tabBar.apagar();
         } else {
@@ -83,13 +82,105 @@ export class PaginaInicialPage implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-    fetch('../../assets/data/albuns.json')
-      .then(res => res.json())
-      .then(json => {
-        for (let i in json)
-          this.albuns.push(json[i]);
-      });
-
+    this.albuns =
+      [
+        {
+          "hora": "07:54",
+          "localizacao": "Viana",
+          "src": "../../assets/img/albuns/01.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "18:36",
+          "localizacao": "Braga",
+          "src": "../../assets/img/albuns/02.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "09:37",
+          "localizacao": "Aveiro",
+          "src": "../../assets/img/albuns/03.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "15:20",
+          "localizacao": "Faro",
+          "src": "../../assets/img/albuns/04.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "05:13",
+          "localizacao": "Porto",
+          "src": "../../assets/img/albuns/05.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "11:48",
+          "localizacao": "Lousã",
+          "src": "../../assets/img/albuns/06.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "13:56",
+          "localizacao": "Sobral",
+          "src": "../../assets/img/albuns/07.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "06:05",
+          "localizacao": "Oiã",
+          "src": "../../assets/img/albuns/08.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "19:18",
+          "localizacao": "Rego",
+          "src": "../../assets/img/albuns/09.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "22:00",
+          "localizacao": "Sosa",
+          "src": "../../assets/img/albuns/10.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "21:08",
+          "localizacao": "Ouca",
+          "src": "../../assets/img/albuns/11.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "23:55",
+          "localizacao": "Ereira",
+          "src": "../../assets/img/albuns/12.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "14:41",
+          "localizacao": "Évora",
+          "src": "../../assets/img/albuns/13.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "17:49",
+          "localizacao": "Lisboa",
+          "src": "../../assets/img/albuns/14.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "20:55",
+          "localizacao": "Pombal",
+          "src": "../../assets/img/albuns/15.jpg",
+          "fotos": {}
+        },
+        {
+          "hora": "07:52",
+          "localizacao": "Moita",
+          "src": "../../assets/img/albuns/16.jpg",
+          "fotos": {}
+        }
+      ];
   }
 
 
