@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { MediaItemComponent } from '../components/media-item/media-item.component';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectModeService } from '../services/select-mode.service';
 import { TabsComponent } from '../components/tabs/tabs.component';
 import { Subject } from 'rxjs';
@@ -25,10 +25,15 @@ export class MomentosPage implements OnInit {
   private PresubjectDelete: Subject<boolean>;
   private PresubjectShare: Subject<boolean>;
   private toolbarVisibleStatus: any;
+  public albumName: string;
 
-  constructor(private selectModeService: SelectModeService, public navRoot: NavController, public toastController: ToastController) {
+  constructor(private selectModeService: SelectModeService, public navRoot: NavController, public toastController: ToastController, private route: ActivatedRoute, private router: Router) {
     this.selectMode = false;
     this.selectedCounter = 0;
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.albumName = this.router.getCurrentNavigation().extras.state.albumName;
+    }
+
   }
 
   ngOnInit() {

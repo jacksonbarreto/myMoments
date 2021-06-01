@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-media-item',
@@ -17,13 +18,14 @@ export class MediaItemComponent implements OnInit {
   private durationLongPress: number;
   private subject: Subject<boolean>;
   private subjectChecked: Subject<boolean>;
+  private event: any;
   public checked: boolean;
   @Input('route') route: string;
   @Input('image') image: string;
   @Input('place') place: string;
   @Input('time') time: string;
 
-  constructor(private navRoot: NavController) {
+  constructor(private navRoot: NavController, private router: Router) {
     this.longPressActive = false;
     this.checkBoxVisible = false;
     this.active = true;
@@ -54,9 +56,12 @@ export class MediaItemComponent implements OnInit {
   }
 
   public checkBoxStatus(status: boolean) {
+
     if (status != this.checked) {
       this.checked = status;
-      this.subjectChecked.next(status);
+
+      if (this.event != 'check')
+        this.subjectChecked.next(status);
     }
 
   }
@@ -76,18 +81,36 @@ export class MediaItemComponent implements OnInit {
     this.verifyLongPress();
   }
 
-  public onClick(): void {
+  public onClick(event?): void {
+    if (event)
+      this.event = event.target.id;
+    else
+      this.event = null;
     if (this.checkBoxVisible) {
       if (this.checked) {
         this.checkBoxStatus(false);
+        if (event != null)
+          event.target.removeAttribute('checked', false);
       }
       else {
         this.checkBoxStatus(true);
+        if (event != null)
+          event.target.setAttribute('checked', true);
       }
     } else {
-      this.navRoot.navigateRoot(this.route);
+      let navigationExtras: NavigationExtras;
+
+      navigationExtras = {
+        state: {
+          albumName: this.place
+        }
+      };
+      //this.navRoot.navigateRoot(this.route);
+      this.router.navigate([this.route], navigationExtras);
     }
   }
+
+
 
 
   public getCounterStatus(): Subject<boolean> {

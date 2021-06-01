@@ -72,7 +72,8 @@
         </ion-row>
     </ion-grid>
 
-    <ion-fab vertical="bottom" horizontal="start" slot="fixed" style="margin-bottom:13%; margin-left:13%;">
+    <ion-fab *ngIf="!isSelectMode()" vertical="bottom" horizontal="start" slot="fixed"
+        style="margin-bottom:15.3%; margin-left:15.3%;">
         <ion-fab-button color="light">
             <ion-icon name="add-outline"></ion-icon>
         </ion-fab-button>
