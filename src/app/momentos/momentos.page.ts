@@ -26,6 +26,7 @@ export class MomentosPage implements OnInit {
   private PresubjectShare: Subject<boolean>;
   private toolbarVisibleStatus: any;
   public albumName: string;
+  public albuns: any[] = [];
 
   constructor(private selectModeService: SelectModeService, public navRoot: NavController, public toastController: ToastController, private route: ActivatedRoute, private router: Router) {
     this.selectMode = false;
@@ -37,8 +38,15 @@ export class MomentosPage implements OnInit {
   }
 
   ngOnInit() {
-
+    fetch('../../assets/data/albuns.json')
+      .then(res => res.json())
+      .then(json => {
+        for (let i in json)
+          this.albuns.push(json[i]);
+      });
   }
+
+
 
   async msgError(msg: string): Promise<void> {
     const toast = await this.toastController.create({
