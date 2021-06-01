@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-media-item',
@@ -23,7 +24,7 @@ export class MediaItemComponent implements OnInit {
   @Input('place') place: string;
   @Input('time') time: string;
 
-  constructor(private navRoot: NavController) {
+  constructor(private navRoot: NavController, private router: Router) {
     this.longPressActive = false;
     this.checkBoxVisible = false;
     this.active = true;
@@ -85,7 +86,15 @@ export class MediaItemComponent implements OnInit {
         this.checkBoxStatus(true);
       }
     } else {
-      this.navRoot.navigateRoot(this.route);
+      let navigationExtras: NavigationExtras;
+
+      navigationExtras = {
+        state: {
+          albumName: this.place
+        }
+      };
+      //this.navRoot.navigateRoot(this.route);
+      this.router.navigate([this.route], navigationExtras);
     }
   }
 

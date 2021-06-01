@@ -1,6 +1,7 @@
 <ion-header>
     <ion-toolbar class="transparent-background-color" *ngIf="!isSelectMode()">
-        <ion-title size="medium">Momentos</ion-title>
+        <ion-title size="medium">Momentos <span class="complementTitle" *ngIf="albumName">({{albumName}})</span>
+        </ion-title>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="pagina-inicial"></ion-back-button>
         </ion-buttons>
