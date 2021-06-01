@@ -7,7 +7,17 @@
   "windowsAndroidStudioPath": "C:\\Users\\jacks\\AppData\\Local\\JetBrains\\Toolbox\\apps\\AndroidStudio\\ch-0\\202.7351085\\bin\\studio64.exe",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 600,
+      "launchAutoHide": true,
+      "backgroundColor": "#ffffffff",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": true,
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#999999",
+      "splashFullScreen": true,
+      "splashImmersive": true
     }
   },
   "cordova": {}
