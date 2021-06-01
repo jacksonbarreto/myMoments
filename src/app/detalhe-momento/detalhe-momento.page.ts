@@ -45,7 +45,7 @@ export class DetalheMomentoPage implements OnInit {
   async apagar() {
     const modal = await this.modalController.create({
       component: ModalApagarMomentoPage,
-      cssClass: 'modal-vivenciar-css'
+      cssClass: 'modal-apagar-css'
     });
     modal.onDidDismiss()
       .then((data) => {
